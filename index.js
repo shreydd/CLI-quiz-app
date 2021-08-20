@@ -6,12 +6,22 @@ var score = 0;
 
 const userQuestion = ["Am I older than 30? ",
                     "Do I procrastinate alot? ",
-                    "Do I like the South Indian food Uppitu / Upma? "
+                    "Do I like the South Indian food Uppitu / Upma? ",
+                    "Do I like the tv show, friends? ",
+                    "Do I own an instagram account? "
 ];
 
-var userAnswer = ["no","yes","no"];
+var userAnswer = ["no","yes","no","yes","no"];
+
+var userName;
+
+function userNameInput(){
+  userName = readlineSync.question("Enter a username: ");
+  console.log(`Welcome to the quiz ${userName}. Let's see what you have got :p`)
+}
 
 function play(){
+  userNameInput();
   for(i=0; i<userQuestion.length; i++) {
     
     let tempAnswer = readlineSync.question(userQuestion[i]).toLowerCase();
@@ -32,11 +42,11 @@ function play(){
 }
 
 function finalMessage(){
-  if(score < 3){
-    console.log(chalk.red("Looks like we need to hangout more lol"));
+  if(score < 5){
+    console.log(chalk.red(`Looks like we need to hangout more ${userName} lol`));
   }
-  if(score === 3){
-    console.log(chalk.green("Wow you know me well, let's catch up soon "));
+  if(score === 5){
+    console.log(chalk.green(`Wow you know me well ${userName}, let's catch up soon `));
   }
 }
 
